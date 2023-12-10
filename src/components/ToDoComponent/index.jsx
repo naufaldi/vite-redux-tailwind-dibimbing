@@ -13,21 +13,25 @@ const ToDoComponent = () => {
   const status = useSelector((state) => state.todos.status);
   //state ini untuk error
   const error = useSelector((state) => state.todos.error);
-
+  // tanpa trigger, langsung loading
   useEffect(() => {
+    // dispatch fetchtodo
     dispatch(fetchToDo());
   }, [dispatch]);
-
-  console.log('todo', todo);
-  console.log('status', status);
-  console.log('error', error);
+  // print todo,status dan error
+  // console.log('todo', todo);
+  // console.log('status', status);
+  // console.log('error', error);
+  //early return utk loading
   if (status === 'loading') return <Loading />;
+  //early return utk error
   if (status === 'failed') return <ErrorComponent message={error} />;
   return (
     <div className="mt-8 mx-auto">
+      {/* kalau success */}
       {status === 'succeeded' && (
         <div key={todo.id}>
-          <h3 className="font-bold text-3xl text-blue-400">{todo.tile}</h3>
+          <h3 className="font-bold text-3xl text-blue-400">{todo.title}</h3>
           <p
             className={`font-semibold text-lg ${
               todo.completed ? 'text-green-600' : 'text-red-500'

@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { decrement, increment } from './reducer/counterSlice';
 import Card from './components/Card';
 import ToDoComponent from './components/ToDoComponent';
+import ToDoComponentById from './components/ToDoByIdComponent';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
       </div> */}
       <Card />
       <ToDoComponent />
+      <ToDoComponentById />
     </>
   );
 }
